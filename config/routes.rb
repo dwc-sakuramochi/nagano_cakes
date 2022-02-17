@@ -14,8 +14,38 @@ Rails.application.routes.draw do
 namespace :admin do
   resources :genres, only: [:index, :create, :edit, :update]
 end
+scope module: :public do
+ root to: 'homes#top'
+ get 'about' => 'homes#about', as: 'about'
 
-root to: 'public/homes#top'
+
+  resources :items, only: [:index,:show]
+  resources :customers, only: [:edit,:update] do
+    collection do
+      get :mypage
+      get :unsubscribe
+      patch :withdraw
+    end
+  end
+
+  resources :cart_items, only: [:index,:update,:destroy,:create] do
+    collection do
+      delete :destroy_all
+    end
+  end
+
+  resources :orders, only: [:index,:show,:new,:create] do
+    collection do
+      post :comfiem
+      get :complete
+    end
+  end
+
+  resources :shipping_addresses, only: [:index,:create,:destroy,:edit,:update]
+
+
+
+end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

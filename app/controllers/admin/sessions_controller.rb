@@ -2,7 +2,11 @@
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  skip_before_action :require_no_authentication, only: [:new]
 
+  def after_sign_in_path_for(resource)
+    admin_path(resource)
+  end
   # GET /resource/sign_in
   # def new
   #   super

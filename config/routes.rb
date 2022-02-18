@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
 namespace :admin do
+  get '/' => 'homes#top'
   resources :genres, only: [:index, :create, :edit, :update]
+  resources :items, only: [:new, :index, :create, :show, :edit, :update]
 end
 scope module: :public do
  root to: 'homes#top'

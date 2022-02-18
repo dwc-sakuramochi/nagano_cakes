@@ -10,7 +10,7 @@
 <%# ユーザーログイン後のヘッダー　%>
         <% if customer_signed_in? %>
           <li class="nav-item">
-            マイページ
+            <%= link_to 'マイページ', mypage_customers_path, class: 'nav-link text-dark border rounded' %>
           </li>
           <li class="nav-item">
             商品一覧

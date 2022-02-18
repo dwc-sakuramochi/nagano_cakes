@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 namespace :admin do
   get '/' => 'homes#top'
   resources :genres, only: [:index, :create, :edit, :update]
+  resources :items, only: [:new, :index, :create, :show, :edit, :update]
 end
 scope module: :public do
  root to: 'homes#top'
@@ -43,8 +44,6 @@ scope module: :public do
   end
 
   resources :shipping_addresses, only: [:index,:create,:destroy,:edit,:update]
-
-
 
 end
 

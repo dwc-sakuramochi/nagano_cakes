@@ -42,11 +42,7 @@ scope module: :public do
 
   resources :shipping_addresses, only: [:index,:create,:destroy,:edit,:update]
 
-
-
 end
-
-get "about" => "public/homes#about", as: "about"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

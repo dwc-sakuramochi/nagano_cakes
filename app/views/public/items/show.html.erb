@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+
+      <div>
+        <%= image_tag @items.item_image, size:"300x300" %>
+      </div>
+      <div>
+        <h2>
+          <%= @items.item_name %>
+        </h2>
+        <h4>
+          <%= @items.item_explanation %>
+        </h4>
+        <h3>
+          ￥<%= @items.non_taxed_price %>
+        </h3>
+        
+      </div>
+
+  </div>
+</div>
+

@@ -45,10 +45,7 @@ scope module: :public do
 
   resources :shipping_addresses, only: [:index,:create,:destroy,:edit,:update]
 
-
-
 end
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

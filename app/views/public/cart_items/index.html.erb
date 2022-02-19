@@ -19,14 +19,16 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart_items.each do |f| %>
+          <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
-                <%= f.item.item_name %>
+                <%= image_tag cart_item.item.item_image, size:"50x50" %>
+                <%= cart_item.item.item_name %>
               </td>
-              <td><%= f.item.add_tax_price.to_s(:delimited) %></td>
-              <td><%= f.amount %></td>
-              <td><%=f.subtotal.to_s(:delimited) %></td>
+              <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+              <td><% @sum += cart_item.subtotal %></td>
             </tr>
           <% end %>
         </tbody>
@@ -42,7 +44,7 @@
       <table class="table row justify-content-end">
         <tr>
           <th class="bg-light">合計</th>
-         
+          <td><%= @sum.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>

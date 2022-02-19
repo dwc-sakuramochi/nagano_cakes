@@ -1,0 +1,21 @@
+<h2>配送先編集</h2>
+
+<%= form_with(model:@shipping_address, url:shipping_address_path, local:true)do |f| %>
+
+<h2>郵便番号(ハイフンなし)</h2>
+  <div class="form-group">
+  <%= f.text_field :shipping_post_code, autofocus: true, :placeholder => "0000000" %>
+  </div>
+<h2>住所</h2>
+  <div class="form-group">
+  <%= f.text_field :shipping_address, autofocus: true, :placeholder => "東京都渋谷区代々木神園町0-0" %>
+  </div>
+<h2>宛名</h2>
+  <div class="form-group">
+  <%= f.text_field :shipping_name, autofocus: true, :placeholder => "令和道子" %>
+  </div>
+
+<div class="form-group">
+  <%= f.submit class: 'btn btn-success' %>
+</div>
+<% end %>

@@ -5,16 +5,20 @@
         <%= image_tag @items.item_image, size:"300x300" %>
       </div>
       <div>
-        <h2>
-          <%= @items.item_name %>
-        </h2>
-        <h4>
-          <%= @items.item_explanation %>
-        </h4>
-        <h3>
-          ￥<%= @items.non_taxed_price %>
-        </h3>
-        
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+          <h2>
+            <%= f.hidden_field :item_id, value: @items.id %>
+          </h2>
+          <h4>
+            <%= @items.item_explanation %>
+          </h4>
+          <h3>
+            ￥<%= @items.add_tax_price %>
+          </h3>
+
+          <%= f.select :amount, *[1..10], include_blank: '個数選択' %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
       </div>
 
   </div>

@@ -12,6 +12,10 @@ class Admin::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+  
+  def index
+    @items = Item.page(params[:page])
+  end
 
   def edit
     @item = Item.find(params[:id])

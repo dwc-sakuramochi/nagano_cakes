@@ -14,9 +14,10 @@
           <%= item.item_name %>
           </p>
           <p>
-          ￥<%= item.non_taxed_price %>
+          ￥<%= item.add_tax_price %>
           </p>
         </div>
       <% end %>
     </div>
+    <%= paginate @items %>
   </div>

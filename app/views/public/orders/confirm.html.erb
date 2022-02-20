@@ -1,0 +1,11 @@
+<%= @order.shipping_post_code %>
+<%= @order.shipping_address %>
+<%= @order.shipping_name %>
+
+
+<%= form_with(model: @order,url: orders_path,method: :post, local: true)do |f| %>
+<%= f.hidden_field :shipping_post_code, :value => @order.shipping_post_code %>
+<%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
+<%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
+<%= f.submit "確定" %>
+<% end %>

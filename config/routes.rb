@@ -42,7 +42,7 @@ scope module: :public do
 
   resources :orders, only: [:index,:show,:new,:create] do
     collection do
-      post :comfiem
+      post :confirm
       get :complete
     end
   end

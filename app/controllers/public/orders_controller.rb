@@ -33,7 +33,7 @@ class Public::OrdersController < ApplicationController
       order_detail.item_id = cart_item.item_id
       order_detail.order_id = @order.id
       order_detail.amount = cart_item.amount
-      order_detail.price = cart_item.item.add_tax_price.to_s
+      order_detail.price = cart_item.subtotal
       order_detail.product_status = 0
       order_detail.save
       current_customer.cart_items.destroy_all
@@ -44,7 +44,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    @order_details = OrderDetails.all
+    @order_details = OrderDetail.all
   end
 
   private

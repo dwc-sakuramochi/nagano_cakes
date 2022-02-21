@@ -17,19 +17,25 @@ class Public::OrdersController < ApplicationController
       @order.shipping_name = ShippingAddress.find(params[:order][:address]).shipping_name
     else
     end
+    @orders = current_customer.orders
+    @order.postage = 800
+    @cart_items = current_customer.cart_items
+    @sum = 0
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
+    current_customer.cart_items.destroy_all
     redirect_to complete_orders_path
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:shipping_address, :shipping_post_code, :shipping_name, :postage, :billing_amount, :payment_method)
+    params.require(:order).permit(:shipping_address, :shipping_post_code, :shipping_name, :postage, :billing_amount, :payment_method,
+    :order_status)
   end
 
 end

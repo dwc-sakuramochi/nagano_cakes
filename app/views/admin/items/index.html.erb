@@ -2,16 +2,16 @@
 
    <div class="row">
         <div class="col-11 mt-5">
-            <div class="col-2 bg-light text-center"><h3>商品一覧</h3></div>
+            <div class="col-2 text-center mt-5" style="background-color: #EEEEEE"><h5>商品一覧</h5></div>
             <%= link_to new_admin_item_path, class: "row justify-content-end mb-4" do %>
-              <i class="fa-solid fa-circle-plus fa-3x"></i>
+              <i class="fa-solid fa-circle-plus fa-3x" style="color: silver"></i>
             <% end %>
         </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-        <table class="table table-hover table-inverse">
+        <table class="table">
           <thead>
             <tr class="bg-light">
               <th>商品ID</th>
@@ -26,15 +26,15 @@
               <tr>
                 <td><%= item.id %></td>
                 <td>
-                  <%= link_to item.item_name, admin_item_path(item) %>
+                  <%= link_to item.item_name, admin_item_path(item), class: "text-dark", style: "text-decoration: underline;" %>
                 </td>
                 <td><%= item.non_taxed_price %></td>
                 <td><%= item.genre.name %></td>
                 <td>
                   <%if item.sale_status == true %>
-                  　<span class="text-success">販売中</span>
+                    <span class="text-success font-weight-bold">販売中</span>
                   <% else %>
-                    <span class="text-secondary">販売停止中</span>
+                    <span class="text-secondary font-weight-bold">販売停止中</span>
                   <% end %>
                 </td>
               </tr>
@@ -43,7 +43,6 @@
         </table>
       </div>
     </div>
-    <div class="col-12">
-      <%= paginate @items %>
-    </div>
+    <%= paginate @items %>
+    
 </div>

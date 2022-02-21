@@ -35,6 +35,7 @@ class Public::OrdersController < ApplicationController
       order_detail.amount = cart_item.amount
       order_detail.price = cart_item.item.add_tax_price.to_s
       order_detail.product_status = 0
+      order_detail.save
       current_customer.cart_items.destroy_all
       end
     redirect_to complete_orders_path

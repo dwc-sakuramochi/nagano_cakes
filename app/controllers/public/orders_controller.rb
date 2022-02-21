@@ -26,9 +26,24 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
-    current_customer.cart_items.destroy_all
+    if @order.save
+      cart_items = current_customer.cart_items.all
+      cart_items.each do |cart_item|
+      order_detail = OrderDetail.new
+      order_detail.item_id = cart_item.item_id
+      order_detail.order_id = @order.id
+      order_detail.amount = cart_item.amount
+      order_detail.price = cart_item.item.add_tax_price.to_s
+      order_detail.product_status = 0
+      current_customer.cart_items.destroy_all
+      end
     redirect_to complete_orders_path
+    end
+  end
+
+  def index
+    @orders = current_customer.orders.all
+    @order_details = OrderDetails.all
   end
 
   private

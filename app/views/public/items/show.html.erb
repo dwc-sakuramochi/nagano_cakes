@@ -6,14 +6,15 @@
       </div>
       <div>
         <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
-          <h2>
             <%= f.hidden_field :item_id, value: @items.id %>
-          </h2>
+          <h3>
+            <%= @items.item_name %>
+          </h3>
           <h4>
             <%= @items.item_explanation %>
           </h4>
           <h3>
-            ￥<%= @items.add_tax_price %>
+            ￥<%= @items.add_tax_price.to_s(:delimited) %>
           </h3>
 
           <%= f.select :amount, *[1..10], include_blank: '個数選択' %>

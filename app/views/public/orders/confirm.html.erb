@@ -68,7 +68,7 @@
   <%= f.hidden_field :shipping_post_code, :value => @order.shipping_post_code %>
   <%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
   <%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
-  <%= f.hidden_field :order_status, :value => 0 %>
+  <%= f.hidden_field :order_status, :value => "入金待ち" %>
   <%= f.submit "注文を確定" %>
 <% end %>
 </div>

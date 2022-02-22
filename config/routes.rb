@@ -17,7 +17,9 @@ namespace :admin do
   get '/' => 'homes#top'
   resources :genres, only: [:index, :create, :edit, :update]
   resources :items, only: [:new, :index, :create, :show, :edit, :update]
-  resources :orders, only: [:show, :update]
+  resources :orders, only: [:show, :update] do
+    resources :order_details, only: [:update]
+  end
   resources :customers, only: [:index, :show, :edit, :update]
 end
 scope module: :public do

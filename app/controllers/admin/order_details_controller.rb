@@ -6,7 +6,6 @@ class Admin::OrderDetailsController < ApplicationController
     order_detail = OrderDetail.find(params[:id])
     order_detail.update(order_detail_params)
 
-
     if order_details.where(product_status: "製作完了").count == order_details.count
       order.update(order_status: "発送準備中")
     elsif order_details.where(product_status: "製作中").count >= 1

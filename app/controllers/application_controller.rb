@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
    before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -9,6 +10,12 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin
     if current_admin==nil
+      flash[:notice]="ログインが必要です"
+      redirect_to root_path
+    end
+  end
+  def autheniticate_customer
+    if current_customer==nil
       flash[:notice]="ログインが必要です"
       redirect_to root_path
     end

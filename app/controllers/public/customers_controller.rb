@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :autheniticate_customer
 
   def mypage
     @customer = current_customer

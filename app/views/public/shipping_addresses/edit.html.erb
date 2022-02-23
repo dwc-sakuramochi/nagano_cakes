@@ -1,4 +1,13 @@
 <h2>配送先編集</h2>
+<% if @shipping_address.errors.any? %>
+  <div id = "error_explanation">
+    <ul>
+      <% @shipping_address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
 <%= form_with(model:@shipping_address, url:shipping_address_path, local:true)do |f| %>
 

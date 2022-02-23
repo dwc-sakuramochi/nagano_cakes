@@ -35,7 +35,7 @@
             <td>
               <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local: true do |f| %>
                 <%= f.select :order_status, Order.order_statuses.keys %>
-                <%= f.submit "更新", class: "btn btn-success " %>
+                <%= f.submit "更新", class: "btn btn-success" %>
               <% end %>
             </td>
           </tr>

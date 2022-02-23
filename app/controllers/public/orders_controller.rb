@@ -30,16 +30,18 @@ class Public::OrdersController < ApplicationController
     if @order.save
       cart_items = current_customer.cart_items.all
       cart_items.each do |cart_item|
-      order_detail = OrderDetail.new
-      order_detail.item_id = cart_item.item_id
-      order_detail.order_id = @order.id
-      order_detail.amount = cart_item.amount
-      order_detail.price = cart_item.subtotal
-      order_detail.product_status = 0
-      order_detail.save
-      current_customer.cart_items.destroy_all
+        order_detail = OrderDetail.new
+        order_detail.item_id = cart_item.item_id
+        order_detail.order_id = @order.id
+        order_detail.amount = cart_item.amount
+        order_detail.price = cart_item.subtotal
+        order_detail.product_status = 0
+        order_detail.save
+        current_customer.cart_items.destroy_all
       end
-    redirect_to complete_orders_path
+      redirect_to complete_orders_path
+    else
+      redirect_to root_path, notice:"必要事項を確認しもう一度お試しください"
     end
   end
 

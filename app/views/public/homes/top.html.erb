@@ -9,6 +9,13 @@
     <title>nagano_cakes</title>
   </head>
   <main>
+    <% if flash[:notice] %>
+      <div class="alert alert-success" role="alert">
+        <p class="notice text-center" >
+          <%= flash[:notice] %>
+        </p>
+      </div>
+    <% end %>
     <div class = "container">
       <div class = "row">
         <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">

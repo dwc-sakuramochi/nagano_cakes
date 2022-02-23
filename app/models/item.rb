@@ -5,7 +5,12 @@ class Item < ApplicationRecord
   has_many :order_detail
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
-  
+
+  validates :item_name, presence: true
+  validates :item_explanation, presence: true
+  validates :non_taxed_price, numericality: {only_integer: true}
+  validates :sale_status, presence: true
+
   def add_tax_price
     (self.non_taxed_price * 1.1).round
   end

@@ -1,4 +1,14 @@
-<h2>配送先一覧</h2>
+
+  <h2>配送先一覧</h2>
+  <% if @shipping_address.errors.any? %>
+    <div id = "error_explanation">
+      <ul>
+        <% @shipping_address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
  <h2>会員情報編集</h2>
   <%= form_with(model:@shipping_address, url: shipping_addresses_path, local:true) do |f| %>

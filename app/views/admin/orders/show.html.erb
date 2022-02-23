@@ -4,8 +4,8 @@
     <div class="col-3">
       <h5 class="text-center mt-5" style="background-color: #EEEEEE">注文履歴の詳細</h5>
     </div>
-      <div class="col-12">
-        <table>
+      <div class="col-12 mt-3">
+        <table class="col-4">
           <tr>
             <th>購入者</th>
             <td>
@@ -43,7 +43,7 @@
       </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-8">
       <table class="table">
         <thead>
@@ -75,20 +75,20 @@
       </table>
     </div>
 
-    <div class="col-4">
-      <table>
+    <div class="col-4 d-flex align-items-end">
+      <table class="col-7">
         <tr>
-          <th>商品合計</th>
-          <td><%= @sum.to_s(:delimited) %><td>
+          <th class="pb-2">商品合計</th>
+          <td><%= @sum.to_s(:delimited) %>円<td>
         </tr>
         <tr>
-          <th>送料</th>
-          <td><%= @order.postage.to_s %></td>
+          <th class="pb-2">送料</th>
+          <td><%= @order.postage.to_s %>円</td>
         </tr>
         <tr>
-          <th>請求合計額</th>
+          <th class="pb-2">請求合計額</th>
             <% @sum += @order.postage %>
-            <td><%= @sum.to_s(:delimited) %></td>
+            <td><%= @sum.to_s(:delimited) %>円</td>
         </tr>
       </table>
     </div>

@@ -2,15 +2,15 @@
 
   <div class="row">
     <div class="col-3 mb-5">
-      <h3 class="text-center bg-light mt-5">注文履歴一覧</h5>
+      <h5 class="text-center mt-5" style="background-color: #EEEEEE">注文履歴一覧</h5>
    </div>
  </div>
 
   <div class="row">
-    <div class="col-5 mb-5 bg-light">
-      <table>
+    <div class="col-12 mb-5">
+      <table class="table">
           <thead>
-              <tr>
+              <tr class="bg-light">
                   <th>購入日時</th>
                   <th>購入者</th>
                   <th>注文個数</th>
@@ -21,12 +21,12 @@
             <% @orders.each do |order| %>
               <tr>
                   <td>
-                    <%= link_to admin_order_path(order) do %>
+                    <%= link_to admin_order_path(order), class: "text-dark", style: "text-decoration: underline;" do %>
                      <%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
                     <% end %>
                   </td>
                   <td><%= order.customer.first_name %><%= order.customer.last_name %></td>
-                  <td><%= order.order_details.count %></td>
+                  <td><%= order.order_details.sum(:amount) %></td>
                   <td><%= order.order_status %></td>
               </tr>
             <% end %>

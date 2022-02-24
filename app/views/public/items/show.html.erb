@@ -1,4 +1,5 @@
 <div class="container">
+  <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
   <div class="row mt-5">
       <div class="col-3">
         <%= image_tag @items.item_image, size:"300x300" %>
@@ -6,7 +7,6 @@
 
       <div class="col-6 offset-1">
         <table class="col-12">
-          <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
             <%= f.hidden_field :item_id, value: @items.id %>
           <tr>
            <th><h3 class="font-weight-bold"><%= @items.item_name %></h3></th>
@@ -25,7 +25,6 @@
       </div>
   </div>
 
-
       <div class="row">
         <div class="col-12">
           <table class="col-8 text-right">
@@ -36,6 +35,6 @@
           </table>
         </div>
       </div>
-        <% end %>
+  <% end %>
 </div>
 

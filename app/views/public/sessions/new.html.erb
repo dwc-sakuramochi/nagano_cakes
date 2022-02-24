@@ -10,33 +10,32 @@
      <div style="background-color: #EEEEEE"><p>会員の方はこちらからログイン</p></div>
     </div>
   </div>
-
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
   <table class="col-10 mt-5">
-     <%= form_with model: @customer, url: session_path(resource_name) do |f| %>
-      <tr>
-        <th>
-         <%= f.label :"メールアドレス",class:"form-label mt-3 offset-7"%>
-        </th>
-        <th>
-         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control col-8 offset-2" %>
-        </th>
-      </tr>
-      <tr>
-        <th>
-         <%= f.label :"パスワード",class:"form-label mt-3 offset-7" %>
-        </th>
-        <th>
-         <%= f.password_field :password, autocomplete: "current-password",class:"form-control col-8 offset-2" %>
-        </th>
-      </tr>
-      <tr>
-        <th></th>
-        <th>
-         <%= f.submit "ログイン",class:"btn btn-primary mt-5 mb-5 col-5 offset-2" %>
-        </th>
-      </tr>
-    <% end %>
+    <tr>
+      <th>
+        <%= f.label :"メールアドレス",class:"form-label mt-3 offset-7"%>
+      </th>
+      <th>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control col-8 offset-2" %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :"パスワード",class:"form-label mt-3 offset-7" %>
+      </th>
+      <th>
+        <%= f.password_field :password, autocomplete: "current-password",class:"form-control col-8 offset-2" %>
+      </th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>
+        <%= f.submit "ログイン",class:"btn btn-primary mt-5 mb-5 col-5 offset-2" %>
+      </th>
+    </tr>
   </table>
+  <% end %>
 
   <div class="row">
     <div class="col-3 offset-2 text-center mt-5">

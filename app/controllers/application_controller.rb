@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
    before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -7,7 +6,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :post_code, :address, :tel])
   end
-
+  
   def authenticate_admin
     if current_admin==nil
       flash[:notice]="ログインが必要です"
@@ -21,4 +20,5 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+   
 end

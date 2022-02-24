@@ -11,9 +11,9 @@
       <table class="table-bordered">
           <thead class="bg-light">
               <tr>
-                  <th>注文日</th>
-                  <th>配送先</th>
-                  <th>注文商品</th>
+                  <th class="col-1">注文日</th>
+                  <th class="col-5">配送先</th>
+                  <th class="col-2">注文商品</th>
                   <th>支払い金額</th>
                   <th>ステータス</th>
                   <th>注文詳細</th>
@@ -23,12 +23,12 @@
             <% @orders.each do |order| %>
               <tr>
                   <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
-                  <td class="col-5">
+                  <td class="col-1">
                     〒<%= order.shipping_post_code %></br>
                     <%= order.shipping_address %></br>
                     <%= order.shipping_name %>
                   </td>
-                  <td class="col-2">
+                  <td class="col-1">
                     <% order.order_details.each do |order_detail| %>
                     <%= order_detail.item.item_name %>
                     <br>
@@ -36,7 +36,7 @@
                   </td>
                   <td><%= order.billing_amount.to_s(:delimited) %>円</td>
                   <td><%= order.order_status %></td>
-                  <td><%= link_to "表示する",order_path(order), class: "btn btn-primary" %></td>
+                  <td class="text-center"><%= link_to "表示する",order_path(order), class: "btn btn-primary" %></td>
               </tr>
             <% end %>
           </tbody>

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-  
+
   def autheniticate_customer
     if current_customer==nil
       flash[:notice]="ログインが必要です"

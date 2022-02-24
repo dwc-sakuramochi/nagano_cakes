@@ -9,13 +9,13 @@
 <% end %>
 
  <div class="container">
-    
+
     <div class="row">
       <div class="col-3 mt-5">
         <h5 class="text-center bg-light">会員情報編集</h5>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-12 mt-3">
         <%= form_with(model:@customer, url:customer_path, local:true) do |f| %>
@@ -36,7 +36,7 @@
           </div>
           <div class="form-group col-xs-9">
             <%= f.label :住所, class: "col-sm-2" %>
-            <%= f.text_field :address, autofocus: true, :placeholder => "東京都渋谷区代々木神園町0-0", class: "col-sm-7" %>
+            <%= f.text_field :address, autofocus: true, :placeholder => "東京都渋谷区代々木神園町0-0", class: "col-sm-7 pl-0" %>
           </div>
           <div class="form-group col-xs-9">
             <%= f.label :電話番号, class: "col-sm-2" %>
@@ -46,7 +46,7 @@
             <%= f.label :メールアドレス, class: "col-sm-2" %>
             <%= f.email_field :email, autofocus: true, :placeholder => "sample@example.com" %>
           </div>
-          
+
           <div class="col-12">
             <div>
               <%= f.submit "編集内容を保存", class: 'btn btn-success offset-2' %>
@@ -57,5 +57,5 @@
         </form>
       </div>
     </div>
-    
+
   </div>

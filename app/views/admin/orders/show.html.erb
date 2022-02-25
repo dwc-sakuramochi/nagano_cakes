@@ -5,7 +5,7 @@
       <h5 class="text-center mt-5" style="background-color: #EEEEEE">注文履歴の詳細</h5>
     </div>
       <div class="col-12 mt-3">
-        <table class="col-4">
+        <table class="col-6">
           <tr>
             <th>購入者</th>
             <td>
@@ -22,10 +22,16 @@
             <th>配送先</th>
             <td>
               〒<%= @order.shipping_post_code %>
-              <%= @order.shipping_address %><br>
+              <%= @order.shipping_address %>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
               <%= @order.shipping_name %>
             </td>
           </tr>
+
           <tr>
             <th>支払方法</th>
             <td><%= @order.payment_method %></td>
